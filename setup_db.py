@@ -10,9 +10,11 @@ Inspection Table
 id, restaurant_id, INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,CRITICAL FLAG,SCORE,GRADE,GRADE DATE,RECORD DATE,INSPECTION TYPE
 """
 
-def main():
-    conn = sqlite3.connect('main.db')
-    c = conn.cursor()
+def connect_to_db(db_name):
+    conn = sqlite3.connect(db_name)
+    return conn.cursor()
+
+def create_tables(c):
     c.execute(
         '''
         CREATE TABLE restaurant(
@@ -47,7 +49,9 @@ def main():
         '''
     )
 
-
+def main():
+    c = connect_to_db('main.db')
+    create_tables(c)
 
 if __name__ == '__main__':
     main()

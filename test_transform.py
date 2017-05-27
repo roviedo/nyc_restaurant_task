@@ -1,6 +1,14 @@
 import unittest
+import setup_db
+import os
 
-class TestStringMethods(unittest.TestCase):
+class TestTransform(unittest.TestCase):
+    def setUp(self):
+        c = setup_db.connect_to_db('test_main.db')
+        setup_db.create_tables(c)
+
+    def tearDown(self):
+        os.remove('test_main.db')
 
     def test_split(self):
         s = 'hello world'
