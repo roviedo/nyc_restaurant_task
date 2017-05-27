@@ -49,7 +49,7 @@ cd /path/to/nyc_restaurant_task
 
 ### Running application
 ```
-
+python transform.py
 ```
 
 ### Running Tests

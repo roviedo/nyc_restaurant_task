@@ -12,14 +12,16 @@ id, restaurant_id, INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,C
 
 def connect_to_db(db_name):
     conn = sqlite3.connect(db_name)
-    return conn.cursor()
+    return conn
 
-def create_tables(c):
+def create_tables(conn):
+    c = conn.cursor()
     c.execute(
         '''
         CREATE TABLE restaurant(
-          id    INTEGER PRIMARY KEY,
-          restaurant_name  TEXT,
+          id    INTEGER PRIMARY KEY AUTOINCREMENT,
+          camis INTEGER,
+          name  TEXT,
           boro TEXT,
           building TEXT,
           street TEXT,
@@ -49,9 +51,11 @@ def create_tables(c):
         '''
     )
 
+    conn.commit()
+
 def main():
-    c = connect_to_db('main.db')
-    create_tables(c)
+    conn = connect_to_db('main.db')
+    create_tables(conn)
 
 if __name__ == '__main__':
     main()
