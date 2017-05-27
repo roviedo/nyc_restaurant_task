@@ -5,6 +5,34 @@
 
 #### Schema
 
+```
+CREATE TABLE restaurant(
+  id    INTEGER PRIMARY KEY,
+  restaurant_name  TEXT,
+  boro TEXT,
+  building TEXT,
+  street TEXT,
+  zipcode INTEGER,
+  phone INTEGER,
+  cuisine_description TEXT
+);
+
+CREATE TABLE inspection(
+  id     INTEGER,
+  inspection_date   TEXT,
+  action TEXT,
+  violation_code TEXT,
+  violation_description TEXT,
+  critical_flag TEXT,
+  score INTEGER,
+  grade TEXT,
+  grade_date TEXT,
+  record TEXT,
+  inspection_restaurant INTEGER,
+  FOREIGN KEY(inspection_restaurant) REFERENCES artist(id)
+);
+```
+
 ### System requirements
 ```
 virtualenv
