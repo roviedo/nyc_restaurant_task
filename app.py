@@ -24,9 +24,11 @@ class Restaurants_Meta(Resource):
         query = conn.execute(
             'SELECT * FROM restaurant where cuisine_description="Thai" and grade in ("A", "B") limit 10'
         )
-        return {'restaurants': [i[0] for i in query.cursor.fetchall()]}
+
+        return {'restaurants': [i for i in query.cursor.fetchall()]}
 
 api.add_resource(Restaurants_Meta, '/restaurants')
 
 if __name__ == '__main__':
-     app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
