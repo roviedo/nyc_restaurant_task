@@ -1,4 +1,4 @@
-import sqlite3
+import connect_to_db
 
 """
 camis: CAMIS,
@@ -20,11 +20,6 @@ grade_date: GRADE DATE,
 record_date: RECORD DATE,
 inspection_type: INSPECTION TYPE
 """
-
-
-def connect_to_db(db_name):
-    conn = sqlite3.connect(db_name)
-    return conn
 
 
 def create_tables(conn):
@@ -54,11 +49,13 @@ def create_tables(conn):
         );
         '''
     )
+    #TODO: Add indexes and unique clauses
+
     conn.commit()
 
 
 def main():
-    conn = connect_to_db('main.db')
+    conn = connect_to_db.connect_to_sqlite3('main.db')
     create_tables(conn)
 
 if __name__ == '__main__':
