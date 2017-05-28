@@ -1,13 +1,24 @@
 import sqlite3
 
 """
-CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION
-
-id,RestaurantName,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE_DESCRIPTION
-
-
-Inspection Table
-id, restaurant_id, INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,CRITICAL FLAG,SCORE,GRADE,GRADE DATE,RECORD DATE,INSPECTION TYPE
+camis: CAMIS,
+name: DBA,
+boro: BORO,
+building: BUILDING,
+street: STREET,
+zipcode: ZIPCODE,
+phone: PHONE,
+cuisine_description: CUISINE DESCRIPTION,
+inspection_date: INSPECTION DATE,
+action: ACTION,
+violation_code: VIOLATION CODE,
+violation_description: VIOLATION DESCRIPTION,
+critical_flag: CRITICAL FLAG,
+score: SCORE,
+grade: GRADE,
+grade_date: GRADE DATE,
+record_date: RECORD DATE,
+inspection_type: INSPECTION TYPE
 """
 
 def connect_to_db(db_name):
@@ -23,19 +34,11 @@ def create_tables(conn):
           camis INTEGER,
           name  TEXT,
           boro TEXT,
-          building TEXT,
+          building INTEGER,
           street TEXT,
           zipcode INTEGER,
           phone INTEGER,
-          cuisine_description TEXT
-        );
-        '''
-    )
-
-    c.execute(
-        '''
-        CREATE TABLE inspection(
-          id     INTEGER,
+          cuisine_description TEXT,
           inspection_date   TEXT,
           action TEXT,
           violation_code TEXT,
@@ -44,13 +47,11 @@ def create_tables(conn):
           score INTEGER,
           grade TEXT,
           grade_date TEXT,
-          record TEXT,
-          inspection_restaurant INTEGER,
-          FOREIGN KEY(inspection_restaurant) REFERENCES artist(id)
+          record_date TEXT,
+          inspection_type INTEGER
         );
         '''
     )
-
     conn.commit()
 
 def main():

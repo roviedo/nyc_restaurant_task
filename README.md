@@ -7,18 +7,15 @@
 
 ```
 CREATE TABLE restaurant(
-  id    INTEGER PRIMARY KEY,
-  restaurant_name  TEXT,
+  id    INTEGER PRIMARY KEY AUTOINCREMENT,
+  camis INTEGER,
+  name  TEXT,
   boro TEXT,
-  building TEXT,
+  building INTEGER,
   street TEXT,
   zipcode INTEGER,
   phone INTEGER,
-  cuisine_description TEXT
-);
-
-CREATE TABLE inspection(
-  id     INTEGER,
+  cuisine_description TEXT,
   inspection_date   TEXT,
   action TEXT,
   violation_code TEXT,
@@ -27,9 +24,8 @@ CREATE TABLE inspection(
   score INTEGER,
   grade TEXT,
   grade_date TEXT,
-  record TEXT,
-  inspection_restaurant INTEGER,
-  FOREIGN KEY(inspection_restaurant) REFERENCES artist(id)
+  record_date TEXT,
+  inspection_type INTEGER
 );
 ```
 

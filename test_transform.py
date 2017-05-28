@@ -17,19 +17,26 @@ class TestTransform(unittest.TestCase):
     def test_insert(self):
         c = self.conn.cursor()
         restaurants = [
-            (23456, 'Chick F', 'Queens', 'cool building', '123 hoyt street', 12345, 3471234567, 'cool place'),
-            (67891, 'Beef C', 'Brooklyn', 'cool building', '124 hoyt street', 12345, 3471234567, 'cool place'),
+            (
+                40397962,'BEN ASH DELICATESSEN','MANHATTAN',855,'7 AVENUE',10019,2122651818,'Delicatessen','08/05/2016','Violations were cited','10F','Non-food contact surface improperly constructed.','Not Critical',10,'A','08/05/2016','05/25/2017','Re-inspection'
+            )
         ]
 
         c.executemany(
-            '''INSERT INTO restaurant (camis, name, boro, building, street, zipcode, phone, cuisine_description)
-            VALUES (?, ?,?,?,?,?,?,?)''',
+            '''
+            INSERT INTO restaurant (
+                camis, name, boro, building, street, zipcode, phone, cuisine_description,
+                inspection_date, action, violation_code, violation_description,
+                critical_flag, score, grade, grade_date, record, inspection_restaurant
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            ''',
             restaurants
         )
 
         c.execute('SELECT * from restaurant where id = 1')
-        restaurant_row = (1, 23456, 'Chick F', 'Queens', 'cool building', '123 hoyt street', 12345, 3471234567, 'cool place')
+        restaurant_row = (1, 40397962,'BEN ASH DELICATESSEN','MANHATTAN',855,'7 AVENUE',10019,2122651818,'Delicatessen','08/05/2016','Violations were cited','10F','Non-food contact surface improperly constructed.','Not Critical',10,'A','08/05/2016','05/25/2017','Re-inspection')
         self.assertEqual(c.fetchone(), restaurant_row)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,40 +1,42 @@
 import petl as etl
+import sqlite3
+
 
 def main():
-    print('main etl program')
-    # table = (
-    #     etl
-    #     .fromcsv('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
-    #     .convert('foo', 'upper')
-    #     .convert('bar', int)
-    #     .convert('baz', float)
-    #     .addfield('quux', lambda row: row.bar * row.baz)
-    # )
-    #
-    # table.look()
-    '''
-    +-------+-------+
-    | 'foo' | 'bar' |
-    +=======+=======+
-    | 'a'   | 1     |
-    +-------+-------+
-    | 'b'   | 2     |
-    +-------+-------+
-    | 'c'   | 2     |
-    +-------+-------+
-    '''
+    print('Running main ETL program')
 
-
-    table = (
+    table1 = (
         etl
         .fromcsv('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
     )
+
     # Create restaurants table data
-    #
-    #etl.rename(table1, 'sex', 'gender')
-    # tosqlite3(table, 'test.db', 'foobar')
-    for row in table:
-        print(type(row))
+    table2 = etl.rename(
+        table1,
+        {
+            'CAMIS': 'camis',
+            'DBA': 'name',
+            'BORO': 'boro',
+            'BUILDING': 'building',
+            'STREET': 'street',
+            'ZIPCODE': 'zipcode',
+            'PHONE': 'phone',
+            'CUISINE DESCRIPTION': 'cuisine_description',
+            'INSPECTION DATE': 'inspection_date',
+            'ACTION': 'action',
+            'VIOLATION CODE': 'violation_code',
+            'VIOLATION DESCRIPTION': 'violation_description',
+            'CRITICAL FLAG': 'critical_flag',
+            'SCORE': 'score',
+            'GRADE': 'grade',
+            'GRADE DATE': 'grade_date',
+            'RECORD DATE': 'record_date',
+            'INSPECTION TYPE': 'inspection_type'
+        }
+    )
+
+    connection = sqlite3.connect('main.db')
+    etl.todb(table2, connection, 'restaurant')
 
 
 if __name__ == '__main__':
