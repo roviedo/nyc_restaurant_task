@@ -3,6 +3,7 @@ import setup_db
 import os
 import sqlite3
 
+
 class TestTransform(unittest.TestCase):
     def setUp(self):
         try:
@@ -11,8 +12,10 @@ class TestTransform(unittest.TestCase):
         except sqlite3.OperationalError:
             None
 
+
     def tearDown(self):
         os.remove('test_main.db')
+
 
     def test_insert(self):
         c = self.conn.cursor()
@@ -35,7 +38,7 @@ class TestTransform(unittest.TestCase):
 
         c.execute('SELECT * from restaurant where id = 1')
         restaurant_row = (1, 40397962,'BEN ASH DELICATESSEN','MANHATTAN',855,'7 AVENUE',10019,2122651818,'Delicatessen','08/05/2016','Violations were cited','10F','Non-food contact surface improperly constructed.','Not Critical',10,'A','08/05/2016','05/25/2017','Re-inspection')
-        self.assertEqual(c.fetchone(), restaurant_row)
+        self.assertEqual(c.fetchone(), restaurant_row)        
 
 
 if __name__ == '__main__':

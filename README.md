@@ -45,6 +45,8 @@ cd /path/to/nyc_restaurant_task
 
 ### Running application
 ```
+python extract.py
+python setup_db.py
 python transform.py
 ```
 

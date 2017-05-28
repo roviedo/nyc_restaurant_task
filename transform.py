@@ -7,7 +7,7 @@ def main():
 
     table1 = (
         etl
-        .fromcsv('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
+        .fromcsv('DOHMH_New_York_City_Restaurant_Inspection_Results.csv')
     )
 
     # Create restaurants table data

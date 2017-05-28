@@ -21,9 +21,11 @@ record_date: RECORD DATE,
 inspection_type: INSPECTION TYPE
 """
 
+
 def connect_to_db(db_name):
     conn = sqlite3.connect(db_name)
     return conn
+
 
 def create_tables(conn):
     c = conn.cursor()
@@ -53,6 +55,7 @@ def create_tables(conn):
         '''
     )
     conn.commit()
+
 
 def main():
     conn = connect_to_db('main.db')
