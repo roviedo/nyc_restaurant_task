@@ -41,7 +41,7 @@ def transform(filename):
     table3 = etl.convert(
         table2, {
             'score': lambda v: convert_score(v),
-            'phone': lambda v: int(re.sub(r'-|_|\(|\)|\s', '', v))
+            'phone': lambda v: convert_phone(v)
         }
     )
 
@@ -53,6 +53,14 @@ def convert_score(score):
         return int(score)
     except:
         print('Invalid score {}'.format(score), file=sys.stderr)
+        return 0
+
+
+def convert_phone(phone):
+    try:
+        return int(re.sub(r'-|_|\(|\)|\s', '', v))
+    except:
+        print('Invalid phone {}'.format(score), file=sys.stderr)
         return 0
 
 
