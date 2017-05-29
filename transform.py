@@ -40,7 +40,6 @@ def transform(filename):
     table3 = etl.convert(
         table2, {
             'score': lambda v: 0 if v=="" else v,
-            'grade': int,
             'phone': lambda v: re.sub(r'-|_|\(|\)|\s', '', v)
         }
     )
