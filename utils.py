@@ -26,7 +26,7 @@ def build_query(params):
     grades = ("A", "B", "C","D", "E", "F")
     where_clauses = []
     if params.get('min_grade') == 'A':
-        where_clauses.append('grade="A"')
+        where_clauses.append('grade=\'A\'')
     elif params.get('min_grade'):
         where_clauses.append('grade in {}'.format(grades[0:grades.index(params['min_grade'])+1]))
 
