@@ -31,7 +31,6 @@ class Restaurants_Meta(Resource):
 
         #TODO: Build query by urlparams
         query = build_query(params)
-        print(query)
 
         # Connect to database
         if os.environ.get('env') == 'DEV':
@@ -43,9 +42,8 @@ class Restaurants_Meta(Resource):
         cursor = conn.cursor()
 
         #Perform query and return JSON data
-        print('this query {}'.format(query))
         cursor.execute(
-            # 'SELECT * FROM restaurant where cuisine_description="Thai" and grade in ("A", "B") limit 10'
+            # e.g. 'SELECT * FROM restaurant where cuisine_description="Thai" and grade in ("A", "B") limit 10'
             query
         )
 
