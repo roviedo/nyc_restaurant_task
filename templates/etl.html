@@ -16,7 +16,7 @@
                 return response.json();
             }).then((json) => {
                 //TODO: Do doSomething with json;
-                document.getElementById("etl-runner-success-message").innerHTML = "Data was loaded successfully.";
+                document.getElementById("etl-runner-success-message").innerHTML = "Data will be loaded shortly. You can visit /restaurants endpoint.";
             }).catch((error) => {
                 document.getElementById("etl-runner-success-message").innerHTML = "Failed to run etl, please try again.";
             });
