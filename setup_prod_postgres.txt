@@ -13,7 +13,7 @@ CREATE TABLE restaurant(
      violation_code TEXT,
      violation_description TEXT,
      critical_flag TEXT,
-     score INTEGER,
+     score TEXT,
      grade TEXT,
      grade_date TEXT,
      record_date TEXT,
@@ -23,3 +23,5 @@ CREATE TABLE restaurant(
 ALTER TABLE restaurant ALTER COLUMN phone TYPE BIGINT;
 
 ALTER TABLE restaurant ALTER COLUMN inspection_type TYPE TEXT;
+
+ALTER TABLE restaurant ALTER COLUMN score TYPE TEXT;
