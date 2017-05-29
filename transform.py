@@ -40,21 +40,12 @@ def transform(filename):
 
     table3 = etl.convert(
         table2, {
-            'score': lambda v: convert_score(v),
             'phone': lambda v: convert_phone(v),
             'zipcode': lambda v: convert_zipcode(v)
         }
     )
 
     return table3
-
-
-def convert_score(score):
-    try:
-        return int(score)
-    except:
-        print('Invalid score {}'.format(score), file=sys.stderr)
-        return 0
 
 
 def convert_phone(phone):

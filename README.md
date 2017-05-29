@@ -7,25 +7,25 @@
 
 ```
 CREATE TABLE restaurant(
-  id    INTEGER PRIMARY KEY AUTOINCREMENT,
-  camis INTEGER,
-  name  TEXT,
-  boro TEXT,
-  building INTEGER,
-  street TEXT,
-  zipcode INTEGER,
-  phone INTEGER,
-  cuisine_description TEXT,
-  inspection_date   TEXT,
-  action TEXT,
-  violation_code TEXT,
-  violation_description TEXT,
-  critical_flag TEXT,
-  score INTEGER,
-  grade TEXT,
-  grade_date TEXT,
-  record_date TEXT,
-  inspection_type INTEGER
+     id    SERIAL PRIMARY KEY, #SERIAL in postgres (INTEGER PRIMARY KEY AUTOINCREMENT for sqlite3)
+     camis INTEGER,
+     name  TEXT,
+     boro TEXT,
+     building TEXT,
+     street TEXT,
+     zipcode INTEGER,
+     phone BIGINT, # BIGINT for postgres (INTEGER is okay in sqlite3)
+     cuisine_description TEXT,
+     inspection_date   TEXT,
+     action TEXT,
+     violation_code TEXT,
+     violation_description TEXT,
+     critical_flag TEXT,
+     score TEXT,
+     grade TEXT,
+     grade_date TEXT,
+     record_date TEXT,
+     inspection_type TEXT
 );
 ```
 
