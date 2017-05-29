@@ -6,8 +6,9 @@ from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 
 import connect_to_db
-import etl_runner
+# import etl_runner
 import utils
+import tasks
 
 
 app = Flask(__name__)
@@ -58,8 +59,7 @@ class Restaurants_Meta(Resource):
 class ETL_Runner(Resource):
 
     def post(self):
-
-        etl_runner.runner()
+        tasks.runner.delay()
         return "created", 201
 
 
