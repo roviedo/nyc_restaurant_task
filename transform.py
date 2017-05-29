@@ -52,14 +52,12 @@ def convert_phone(phone):
     try:
         return int(re.sub(r'-|_|\(|\)|\s', '', phone))
     except:
-        print('Invalid phone {}'.format(phone), file=sys.stderr)
         return 0
 
 def convert_zipcode(zip_code):
     try:
         return int(zip_code)
     except:
-        print('Invalid zip code {}'.format(zip_code), file=sys.stderr)
         return 0
 
 
