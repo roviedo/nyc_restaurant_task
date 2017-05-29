@@ -51,12 +51,24 @@ cd /path/to/nyc_restaurant_task
 
 ### Setup Datastore locally
 ```
+# Make sure your environment variable is set
+export env="DEV"
+
 cd /path/to/nyc_restaurant_task
 python setup_db.py
 ```
 
 ### Running ETL application
+* go to http://localhost:5000/etl
+* OR for Production: https://floating-spire-76394.herokuapp.com/etl
+* Click on "Run Etl" (wait until it finishes)
+* Now you can visit the restaurants endpoint, read further below.
+
+#### Locally you can run etl manually if you like.
 ```
+# Make sure your environment variable is set
+export env="DEV"
+
 cd /path/to/nyc_restaurant_task
 python etl_runner.py
 ```
@@ -66,9 +78,17 @@ python etl_runner.py
 cd /path/to/nyc_restaurant_task
 python app.py
 Then go to browser: http://localhost:5000
+```
 
-API endpoints:
-http://localhost:5000/restaurants
+### Running application in Prod
+```
+Go to browser:
+https://floating-spire-76394.herokuapp.com
+```
+
+### API endpoints:
+```
+GET: /restaurants
 
 query params:
     * cuisine_description (Thai, Mexican, Chinese, etc.)
@@ -76,6 +96,10 @@ query params:
     * limit (default 1000)
 
 e.g. http://localhost:5000/restaurants?cuisine_description=Thai&min_grade=B&limit=10
+
+
+POST: /etl
+empty body and headers at the moment. Need to add the CSV download url to body and access token to header.
 ```
 
 ### Running Tests
@@ -84,16 +108,7 @@ cd /path/to/nyc_restaurant_task
 nosetests
 ```
 
-### Running application in Prod
-```
-Go to browser:
-https://floating-spire-76394.herokuapp.com
-
-API endpoints:
-https://floating-spire-76394.herokuapp.com/restaurants
-```
-
-### Deploy to Heroku
+### Deploying to Heroku
 ```
 git add .
 git commit -m "COMMIT MESSAGE"

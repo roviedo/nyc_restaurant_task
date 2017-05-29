@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div>Etl Runner</div>
+    <button id="run-etl" type="button">Run Etl</button>
+    <div id="etl-runner-success-message"></div>
+    <script type="text/javascript">
+        document.getElementById("run-etl").addEventListener("click", function(){
+            document.getElementById("etl-runner-success-message").innerHTML = "Running etl ...";
+            var opts = {
+                method: 'POST',
+                body: 'json',
+                headers: {} //TODO: Add access token header or maybe in body. ETL Runner should only be performed by admins of app.
+            };
+            fetch('/etl_runner', opts).then((response) => {
+                return response.json();
+            }).then((json) => {
+                //TODO: Do doSomething with json;
+                document.getElementById("etl-runner-success-message").innerHTML = "Data was loaded successfully.";
+            }).catch((error) => {
+                document.getElementById("etl-runner-success-message").innerHTML = "Failed to run etl, please try again.";
+            });
+        });
+    </script>
+</body>
+</html>
