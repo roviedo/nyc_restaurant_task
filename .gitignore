@@ -4,4 +4,3 @@ main.db
 __pycache__
 query.py
 local_settings.py
-.env
