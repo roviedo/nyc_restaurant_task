@@ -34,7 +34,13 @@ def transform(filename):
         }
     )
 
-    table3 = etl.convert(table2, 'score', int)
+    table3 = etl.convert(
+        table2, {
+            'score': int,
+            'grade': int,
+            'phone': lambda v: v.replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
+        }
+    )
 
     return table3
 

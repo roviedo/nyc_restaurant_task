@@ -3,7 +3,7 @@ CREATE TABLE restaurant(
      camis INTEGER,
      name  TEXT,
      boro TEXT,
-     building INTEGER,
+     building TEXT,
      street TEXT,
      zipcode INTEGER,
      phone INTEGER,
