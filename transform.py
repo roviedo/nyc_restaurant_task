@@ -1,4 +1,5 @@
 import re
+import sys
 
 import petl as etl
 
@@ -39,7 +40,7 @@ def transform(filename):
 
     table3 = etl.convert(
         table2, {
-            'score': lambda v: 0 if (v=="" or v=="N/A") else int(v),
+            'score': lambda v: convert_score(v),
             'phone': lambda v: int(re.sub(r'-|_|\(|\)|\s', '', v))
         }
     )
@@ -47,8 +48,17 @@ def transform(filename):
     return table3
 
 
+def convert_score(score):
+    try:
+        return int(score)
+    except:
+        print('Invalid score {}'.format(score), file=sys.stderr)
+        return 0
+
+
 def main():
     table = transform('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
+
 
 if __name__ == '__main__':
     main()
