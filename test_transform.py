@@ -45,5 +45,6 @@ class TestTransform(unittest.TestCase):
         table = transform.transform('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
         self.assertEqual(len(table), 10)
 
+
 if __name__ == '__main__':
     unittest.main()

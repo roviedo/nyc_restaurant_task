@@ -17,5 +17,9 @@ CREATE TABLE restaurant(
      grade TEXT,
      grade_date TEXT,
      record_date TEXT,
-     inspection_type INTEGER
+     inspection_type TEXT
 );
+
+ALTER TABLE restaurant ALTER COLUMN phone TYPE BIGINT;
+
+ALTER TABLE restaurant ALTER COLUMN inspection_type TYPE TEXT;

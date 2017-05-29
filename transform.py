@@ -34,7 +34,9 @@ def transform(filename):
         }
     )
 
-    return table2
+    table3 = etl.convert(table2, 'score', int)
+
+    return table3
 
 
 def main():
