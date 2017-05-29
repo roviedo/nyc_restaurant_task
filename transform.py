@@ -39,7 +39,7 @@ def transform(filename):
 
     table3 = etl.convert(
         table2, {
-            'score': lambda v: 0 if v=="" else int(v),
+            'score': lambda v: 0 if (v=="" or v=="N/A") else int(v),
             'phone': lambda v: int(re.sub(r'-|_|\(|\)|\s', '', v))
         }
     )
