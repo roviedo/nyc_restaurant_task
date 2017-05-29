@@ -24,16 +24,16 @@ class Restaurants_Meta(Resource):
 
         #Connect to databse
         # conn = e.connect()
-        conn = connect_to_db.connect_to_sqlite3('main.db')
-        cursor = conn.cursor()
-
-        #Perform query and return JSON data
-        cursor.execute(
-            'SELECT * FROM restaurant where cuisine_description="Thai" and grade in ("A", "B") limit 10'
-        )
-
-        restaurants = [build_json(row) for row in cursor.fetchall()]
-
+        # conn = connect_to_db.connect_to_sqlite3('main.db')
+        # cursor = conn.cursor()
+        #
+        # #Perform query and return JSON data
+        # cursor.execute(
+        #     'SELECT * FROM restaurant where cuisine_description="Thai" and grade in ("A", "B") limit 10'
+        # )
+        #
+        # restaurants = [build_json(row) for row in cursor.fetchall()]
+        restaurants = {'hola': 'amigo'}
         return {
             'restaurants': restaurants,
             'count': len(restaurants)
