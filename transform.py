@@ -59,7 +59,7 @@ def convert_score(score):
 
 def convert_phone(phone):
     try:
-        return int(re.sub(r'-|_|\(|\)|\s', '', v))
+        return int(re.sub(r'-|_|\(|\)|\s', '', phone))
     except:
         print('Invalid phone {}'.format(phone), file=sys.stderr)
         return 0
