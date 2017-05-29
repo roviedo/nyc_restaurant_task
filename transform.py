@@ -41,7 +41,8 @@ def transform(filename):
     table3 = etl.convert(
         table2, {
             'score': lambda v: convert_score(v),
-            'phone': lambda v: convert_phone(v)
+            'phone': lambda v: convert_phone(v),
+            'zipcode': lambda v: convert_zipcode(v)
         }
     )
 
@@ -60,7 +61,14 @@ def convert_phone(phone):
     try:
         return int(re.sub(r'-|_|\(|\)|\s', '', v))
     except:
-        print('Invalid phone {}'.format(score), file=sys.stderr)
+        print('Invalid phone {}'.format(phone), file=sys.stderr)
+        return 0
+
+def convert_zipcode(zip_code):
+    try:
+        return int(zip_code)
+    except:
+        print('Invalid zip code {}'.format(zip_code), file=sys.stderr)
         return 0
 
 
