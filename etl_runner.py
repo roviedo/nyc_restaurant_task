@@ -11,7 +11,6 @@ def main():
     extract_csv = extract.ExtractCSV()
     extract_csv.extract_data_from_source(CSV_URL, filename)
     table = transform.transform(filename)
-    print(table)
     load.load(table)
 
 if __name__ == '__main__':

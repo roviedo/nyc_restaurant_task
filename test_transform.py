@@ -31,7 +31,7 @@ class TestTransform(unittest.TestCase):
             INSERT INTO restaurant (
                 camis, name, boro, building, street, zipcode, phone, cuisine_description,
                 inspection_date, action, violation_code, violation_description,
-                critical_flag, score, grade, grade_date, record_date, inspection_restaurant
+                critical_flag, score, grade, grade_date, record_date, inspection_type
             ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             ''',
             restaurants
@@ -43,8 +43,7 @@ class TestTransform(unittest.TestCase):
 
     def test_transform(self):
         table = transform.transform('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
-        print(table)
-        self.assertEqual(1, 0)
+        self.assertEqual(len(table), 10)
 
 if __name__ == '__main__':
     unittest.main()

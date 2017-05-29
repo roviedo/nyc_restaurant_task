@@ -2,5 +2,4 @@ petl
 nose
 flask
 flask-restful
-sqlalchemy
-honcho
+psycopg2

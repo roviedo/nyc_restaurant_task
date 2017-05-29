@@ -35,6 +35,12 @@ virtualenv
 python 3.x
 
 ```
+
+### If you are running app locally don't forget in terminal shell
+```
+export env="DEV"
+```
+
 ### Installation
 ```
 python -m venv nyc_restaurant_task_env
@@ -43,7 +49,7 @@ pip install -r requirements.txt
 cd /path/to/nyc_restaurant_task
 ```
 
-### Setup Datastore
+### Setup Datastore locally
 ```
 cd /path/to/nyc_restaurant_task
 python setup_db.py
@@ -60,18 +66,31 @@ python etl_runner.py
 cd /path/to/nyc_restaurant_task
 python app.py
 Then go to browser: http://localhost:5000
-```
 
-### Running application in Prod
-```
-Go to browser:
-https://floating-spire-76394.herokuapp.com/restaurants
+API endpoints:
+http://localhost:5000/restaurants
+
+query params:
+    * cuisine_description (Thai, Mexican, Chinese, etc.)
+    * min_grade (A, B, C, D, E, F)
+    * limit (default 1000)
+
+e.g. http://localhost:5000/restaurants?cuisine_description=Thai&min_grade=B&limit=10
 ```
 
 ### Running Tests
 ```
 cd /path/to/nyc_restaurant_task
 nosetests
+```
+
+### Running application in Prod
+```
+Go to browser:
+https://floating-spire-76394.herokuapp.com
+
+API endpoints:
+https://floating-spire-76394.herokuapp.com/restaurants
 ```
 
 ### Deploy to Heroku
