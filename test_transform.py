@@ -1,13 +1,14 @@
 import unittest
 import setup_db
 import os
-import sqlite3
+import connect_to_db
+import transform
 
 
 class TestTransform(unittest.TestCase):
     def setUp(self):
         try:
-            self.conn = setup_db.connect_to_db('test_main.db')
+            self.conn = connect_to_db.connect_to_sqlite3('test_main.db')
             setup_db.create_tables(self.conn)
         except sqlite3.OperationalError:
             None
@@ -30,7 +31,7 @@ class TestTransform(unittest.TestCase):
             INSERT INTO restaurant (
                 camis, name, boro, building, street, zipcode, phone, cuisine_description,
                 inspection_date, action, violation_code, violation_description,
-                critical_flag, score, grade, grade_date, record, inspection_restaurant
+                critical_flag, score, grade, grade_date, record_date, inspection_restaurant
             ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             ''',
             restaurants
@@ -38,8 +39,12 @@ class TestTransform(unittest.TestCase):
 
         c.execute('SELECT * from restaurant where id = 1')
         restaurant_row = (1, 40397962,'BEN ASH DELICATESSEN','MANHATTAN',855,'7 AVENUE',10019,2122651818,'Delicatessen','08/05/2016','Violations were cited','10F','Non-food contact surface improperly constructed.','Not Critical',10,'A','08/05/2016','05/25/2017','Re-inspection')
-        self.assertEqual(c.fetchone(), restaurant_row)        
+        self.assertEqual(c.fetchone(), restaurant_row)
 
+    def test_transform(self):
+        table = transform.transform('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
+        print(table)
+        self.assertEqual(1, 0)
 
 if __name__ == '__main__':
     unittest.main()

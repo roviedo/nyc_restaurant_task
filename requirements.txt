@@ -3,3 +3,4 @@ nose
 flask
 flask-restful
 sqlalchemy
+honcho

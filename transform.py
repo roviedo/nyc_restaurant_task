@@ -1,13 +1,12 @@
 import petl as etl
-import sqlite3
+import connect_to_db
 
 
-def main():
-    print('Running main ETL program')
+def transform(filename):
 
     table1 = (
         etl
-        .fromcsv('DOHMH_New_York_City_Restaurant_Inspection_Results.csv')
+        .fromcsv(filename)
     )
 
     # Create restaurants table data
@@ -35,8 +34,11 @@ def main():
         }
     )
 
-    connection = sqlite3.connect('main.db')
-    etl.todb(table2, connection, 'restaurant')
+    return table2
+
+
+def main():
+    table = transform('sample.csv')
 
 
 if __name__ == '__main__':

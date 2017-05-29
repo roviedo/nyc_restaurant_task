@@ -1,7 +1,7 @@
-# The NYC Restaurant Task
-## ETL job that ingests a ~500k rows DOHMH New York City Restaurant Inspection Results data set from [NYC Open Data Link](https://nycopendata.socrata.com/api/views/xx67-kt59/rows.csv?accessType=DOWNLOAD)
+# The NYC Restaurant task using Python, Petl, Flask and Heroku
 
 ### About application
+#### ETL job that ingests a ~500k rows DOHMH New York City Restaurant Inspection Results data set from [NYC Open Data Link](https://nycopendata.socrata.com/api/views/xx67-kt59/rows.csv?accessType=DOWNLOAD)
 
 #### Schema
 
@@ -43,11 +43,29 @@ pip install -r requirements.txt
 cd /path/to/nyc_restaurant_task
 ```
 
-### Running application
+### Setup Datastore
 ```
-python extract.py
+cd /path/to/nyc_restaurant_task
 python setup_db.py
-python transform.py
+```
+
+### Running ETL application
+```
+cd /path/to/nyc_restaurant_task
+python etl_runner.py
+```
+
+### Running Flask application locally
+```
+cd /path/to/nyc_restaurant_task
+python app.py
+Then go to browser: http://localhost:5000
+```
+
+### Running application in Prod
+```
+Go to browser:
+https://floating-spire-76394.herokuapp.com/restaurants
 ```
 
 ### Running Tests
@@ -55,3 +73,18 @@ python transform.py
 cd /path/to/nyc_restaurant_task
 nosetests
 ```
+
+### Deploy to Heroku
+```
+git add .
+git commit -m "COMMIT MESSAGE"
+
+# command below only needs to be done first time
+heroku create
+git push heroku master
+
+heroku open
+OR
+go to your heroku app link
+```
+For more info go to [Heroku Getting Started with Python]( https://devcenter.heroku.com/articles/getting-started-with-python)
