@@ -1,4 +1,7 @@
+import re
+
 import petl as etl
+
 import connect_to_db
 
 
@@ -38,7 +41,7 @@ def transform(filename):
         table2, {
             'score': int,
             'grade': int,
-            'phone': lambda v: v.replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
+            'phone': lambda v: re.sub(r'-|_|\(|\)|\s', '', v)
         }
     )
 
