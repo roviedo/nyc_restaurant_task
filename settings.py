@@ -9,4 +9,7 @@ PROD_POSTRGRES = {
 REDIS_URL = 'redis://localhost:6379'
 
 # Local settings overrides the above plus any other local variables
-from local_settings import *
+try:
+    from local_settings import *
+except:
+    pass
