@@ -3,3 +3,5 @@ nose
 flask
 flask-restful
 psycopg2
+celery
+redis
