@@ -14,13 +14,22 @@ def connect_to_sqlite3(db_name):
 
 def connect_to_postgres():
     #TODO: get connection by environment too e.g. (local, qa, prod)
-    conn = psycopg2.connect(
-        host=settings.PROD_POSTRGRES['host'],
-        port=settings.PROD_POSTRGRES['port'],
-        dbname=settings.PROD_POSTRGRES['dbname'],
-        user=settings.PROD_POSTRGRES['user'],
-        password=settings.PROD_POSTRGRES['password']
-    )
+    if os.environ.get('env') == 'DEV':
+        conn = psycopg2.connect(
+            host=settings.PROD_POSTRGRES['host'],
+            port=settings.PROD_POSTRGRES['port'],
+            dbname=settings.PROD_POSTRGRES['dbname'],
+            user=settings.PROD_POSTRGRES['user'],
+            password=settings.PROD_POSTRGRES['password']
+        )
+    else:
+        conn = psycopg2.connect(
+            host=os.environ.get('POSTGRES_HOST'),
+            port=os.environ.get('POSTGRES_PORT'),
+            dbname=os.environ.get('POSTGRES_DBNAME'),
+            user=os.environ.get('POSTGRES_USER'),
+            password=os.environ.get('POSTGRES_PASSWORD')
+        )
     return conn
 
 

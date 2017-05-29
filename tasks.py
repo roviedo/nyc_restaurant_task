@@ -8,10 +8,10 @@ import transform
 import load
 
 
-app = celery.Celery('example')
+app = celery.Celery('etl_runner')
 app.conf.update(
-    BROKER_URL=os.environ['REDIS_URL'],
-    CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
+    BROKER_URL=os.environ.get('REDIS_URL'),
+    CELERY_RESULT_BACKEND=os.environ.get('REDIS_URL')
 )
 
 
