@@ -39,8 +39,8 @@ def transform(filename):
 
     table3 = etl.convert(
         table2, {
-            'score': lambda v: 0 if v=="" else v,
-            'phone': lambda v: re.sub(r'-|_|\(|\)|\s', '', v)
+            'score': lambda v: 0 if v=="" else int(v),
+            'phone': lambda v: int(re.sub(r'-|_|\(|\)|\s', '', v))
         }
     )
 
@@ -49,7 +49,6 @@ def transform(filename):
 
 def main():
     table = transform('DOHMH_New_York_City_Restaurant_Inspection_Results_sample.csv')
-
 
 if __name__ == '__main__':
     main()
