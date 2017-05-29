@@ -20,9 +20,9 @@ class Restaurants_Meta(Resource):
         limit = request.args.get('limit', 500)
 
         #TODO: Build query by urlparams
-        query = 'SELECT * FROM restaurant'
-
-        #Connect to databse
+        # query = 'SELECT * FROM restaurant'
+        #
+        # Connect to databse
         # conn = e.connect()
         # conn = connect_to_db.connect_to_sqlite3('main.db')
         # cursor = conn.cursor()
@@ -33,6 +33,7 @@ class Restaurants_Meta(Resource):
         # )
         #
         # restaurants = [build_json(row) for row in cursor.fetchall()]
+
         restaurants = {'hola': 'amigo'}
         return {
             'restaurants': restaurants,
@@ -40,6 +41,10 @@ class Restaurants_Meta(Resource):
         }
 
 api.add_resource(Restaurants_Meta, '/restaurants')
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
 
 def build_json(row):
     return {
