@@ -31,7 +31,7 @@ def create_tables(conn):
           camis INTEGER,
           name  TEXT,
           boro TEXT,
-          building INTEGER,
+          building TEXT,
           street TEXT,
           zipcode INTEGER,
           phone INTEGER,
@@ -41,11 +41,11 @@ def create_tables(conn):
           violation_code TEXT,
           violation_description TEXT,
           critical_flag TEXT,
-          score INTEGER,
+          score TEXT,
           grade TEXT,
           grade_date TEXT,
           record_date TEXT,
-          inspection_type INTEGER
+          inspection_type TEXT
         );
         '''
     )

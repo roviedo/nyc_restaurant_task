@@ -3,6 +3,13 @@
 ### About application
 #### ETL job that ingests a ~500k rows DOHMH New York City Restaurant Inspection Results data set from [NYC Open Data Link](https://nycopendata.socrata.com/api/views/xx67-kt59/rows.csv?accessType=DOWNLOAD)
 
+#### App is current live on Heroku:
+Splash screen:
+https://floating-spire-76394.herokuapp.com/
+
+API:
+https://floating-spire-76394.herokuapp.com/restaurants
+
 #### Why Python Petl?
 * Python PETL it is very well documented, updated, quick to learn ETL library.
 
