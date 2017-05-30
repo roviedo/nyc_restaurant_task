@@ -3,7 +3,11 @@
 ### About application
 #### ETL job that ingests a ~500k rows DOHMH New York City Restaurant Inspection Results data set from [NYC Open Data Link](https://nycopendata.socrata.com/api/views/xx67-kt59/rows.csv?accessType=DOWNLOAD)
 
+#### Why Python Petl?
+* Python PETL it is very well documented, updated, quick to learn ETL library.
+
 #### Schema
+I chose the schema to be denormalized for faster searching, since the data for restaurants for NY is pretty large, we might want to continue adding other cities or states as well.
 
 ```
 CREATE TABLE restaurant(
@@ -30,11 +34,9 @@ CREATE TABLE restaurant(
 ```
 
 ### System requirements
-```
-virtualenv
-python 3.x
+* [Postgres DB](https://postgresapp.com/) if you are going to deploy to production environment.
+* python 3.x
 
-```
 
 ### If you are running app locally don't forget in terminal shell
 ```
@@ -109,6 +111,10 @@ nosetests
 ```
 
 ### Deploying to Heroku
+* My setup on Heroku consists of two datastores
+    * Postgres: permanent storage
+    * Redis: Celery broker and Result backend
+
 ```
 git add .
 git commit -m "COMMIT MESSAGE"
@@ -122,3 +128,23 @@ OR
 go to your heroku app link
 ```
 For more info go to [Heroku Getting Started with Python]( https://devcenter.heroku.com/articles/getting-started-with-python)
+
+#### Running Postgres DB from command line:
+```
+heroku pg:psql
+```
+
+#### Tail Heroku logs
+```
+heroku logs --tail
+heroku logs -t -p worker
+```
+
+### Issues
+* Heroku's memory limitations, when trying to trigger tasks too many times I found myself having to do the following.
+```
+heroku redis:cli
+$ flushall
+```
+
+* Limited only id, camis, zipcode and phone number fields to be integer due to time limitations.
