@@ -1,4 +1,4 @@
-# The NYC Restaurant task using Python, Petl, Flask and Heroku
+# NYC Restaurant task using Python, Petl, Flask and Heroku
 
 ### About application
 #### ETL job that ingests a ~500k rows DOHMH New York City Restaurant Inspection Results data set from [NYC Open Data Link](https://nycopendata.socrata.com/api/views/xx67-kt59/rows.csv?accessType=DOWNLOAD)
