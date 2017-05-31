@@ -6,7 +6,6 @@ from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 
 import connect_to_db
-import etl_runner
 import utils
 import tasks
 
@@ -60,7 +59,7 @@ class ETL_Runner(Resource):
 
     def post(self):
         if os.environ.get('env') == 'DEV':
-            etl_runner.runner()
+            tasks.runner()
         else:
             tasks.runner.delay()
         return "created", 201

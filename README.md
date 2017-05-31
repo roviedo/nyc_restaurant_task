@@ -80,7 +80,9 @@ python setup_db.py
 export env="DEV"
 
 cd /path/to/nyc_restaurant_task
-python etl_runner.py
+python
+import tasks
+runner()
 ```
 
 ### Running Flask application locally
