@@ -27,15 +27,15 @@ CREATE TABLE restaurant(
      zipcode INTEGER,
      phone BIGINT, # BIGINT for postgres (INTEGER is okay in sqlite3)
      cuisine_description TEXT,
-     inspection_date   TEXT,
+     inspection_date   TEXT, #TODO: Transform to datetime type
      action TEXT,
      violation_code TEXT,
      violation_description TEXT,
      critical_flag TEXT,
      score TEXT,
      grade TEXT,
-     grade_date TEXT,
-     record_date TEXT,
+     grade_date TEXT, #TODO: Transform to datetime type
+     record_date TEXT, #TODO: Transform to datetime type
      inspection_type TEXT
 );
 ```
@@ -72,6 +72,7 @@ python setup_db.py
 * OR for Production: https://floating-spire-76394.herokuapp.com/etl
 * Click on "Run Etl" (wait until it finishes)
 * Now you can visit the restaurants endpoint, read further below.
+* Currently in production the ETL is kicked off by a celery task, the code is duplicated in both etl_runner.py and tasks.py, need to consolidate the code.
 
 #### Locally you can run etl manually if you like.
 ```
@@ -118,7 +119,7 @@ nosetests
 ```
 
 ### Deploying to Heroku
-* My setup on Heroku consists of two datastores
+* My setup on Heroku consists of two datastores and one server for API and web application
     * Postgres: permanent storage
     * Redis: Celery broker and Result backend
 
