@@ -82,7 +82,7 @@ export env="DEV"
 cd /path/to/nyc_restaurant_task
 python
 import tasks
-runner()
+tasks.runner()
 ```
 
 ### Running Flask application locally
