@@ -160,3 +160,5 @@ $ flushall
 ```
 
 * Limited only id, camis, zipcode and phone number fields to be integer due to time limitations.
+
+* Also, Heroku's free Database only allows you to have 10,000 rows, which the NYC Restaurant data beyond exceeds that.
