@@ -31,8 +31,13 @@ def build_query(params):
         where_clauses.append('grade in {}'.format(grades[0:grades.index(params['min_grade'])+1]))
 
     if params.get('cuisine_description'):
-        where_clauses.append('cuisine_description="%s"' % params['cuisine_description'])
+        where_clauses.append('cuisine_description="{}"'.format(params['cuisine_description']))
 
+    if params.get('camis'):
+        where_clauses.append('camis="{}"'.format(params['camis']))
+
+    if params.get('boro'):
+        where_clauses.append('boro="{}"'.format(params['boro']))
 
     if where_clauses:
         where_clauses_string = ' AND '.join(where_clauses)

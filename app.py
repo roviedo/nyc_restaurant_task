@@ -25,6 +25,12 @@ class Restaurants_Meta(Resource):
         if request.args.get('min_grade'):
             params['min_grade'] = request.args['min_grade']
 
+        if request.args.get('camis'):
+            params['camis'] = request.args['camis']
+
+        if request.args.get('boro'):
+            params['boro'] = request.args['boro']
+
         if request.args.get('limit'):
             params['limit'] = request.args['limit']
         else:

@@ -105,6 +105,8 @@ GET: /restaurants
 query params:
     * cuisine_description (Thai, Mexican, Chinese, etc.)
     * min_grade (A, B, C, D, E, F)
+    * camis (Establishment ID number e.g. 50060433)
+    * boro (BROOKLYN, QUEENS, STATEN ISLAND, MANHATTAN, BRONX)
     * limit (default 1000)
 
 e.g. http://localhost:5000/restaurants?cuisine_description=Thai&min_grade=B&limit=10

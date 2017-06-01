@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div>Etl Runner</div>
-    <button id="run-etl" type="button">Run Etl</button>
-    <div id="etl-runner-success-message"></div>
+    <div class="header">
+        <h1>Etl Runner</h1>
+        <button id="run-etl" type="button">Run ETL</button>
+        <div id="etl-runner-success-message"></div>
+    </div>
     <script type="text/javascript">
         document.getElementById("run-etl").addEventListener("click", function(){
             document.getElementById("etl-runner-success-message").innerHTML = "Running etl ...";
@@ -22,5 +24,10 @@
             });
         });
     </script>
+    <style>
+        .header {
+            text-align: center;
+        }
+    </style>
 </body>
 </html>
